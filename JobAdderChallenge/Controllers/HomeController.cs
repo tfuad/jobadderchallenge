@@ -1,4 +1,5 @@
-﻿using JobAdderChallenge.Services;
+﻿using JobAdderChallenge.Models;
+using JobAdderChallenge.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +18,12 @@ namespace JobAdderChallenge.Controllers
             var jobs = await service.GetJobsAsync();
             var candidates = await service.GetCandidatesAsync();
 
+            var model = new Home();
 
+            model.Jobs = jobs.Select(x => new Job(x)).ToList();
+            model.Candidates = candidates.Select(x => new Candidate(x)).ToList();
 
-            return View();
+            return View(model);
         }
     }
 }
