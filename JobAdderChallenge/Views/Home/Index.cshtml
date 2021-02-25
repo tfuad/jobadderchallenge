@@ -4,22 +4,24 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Jobs</h2>
+<h2>JobAdder</h2>
+
+
 
 <ul>
     @foreach (var job in Model.Jobs)
     {
-        <li>@job.Name</li>
-    }
-</ul>
+        <li>
+            <h1>@job.Name</h1>
+            <p>@foreach (var skill in @job.Skills) { <li> @skill </li> }</p>
 
-
-<h2>Candidates</h2>
-
-<ul>
-    @foreach (var candidate in Model.Candidates)
-    {
-        <li>@candidate.Name</li>
+            @foreach (var jobCandidate in job.JobCandidates)
+            {
+<p>@jobCandidate.Candidate.Name - @jobCandidate.Score</p>
+            <p>@foreach (var skill in jobCandidate.Candidate.Skills)
+            { <li>x @skill </li> }</p>
+            }
+        </li>
     }
 </ul>
 
