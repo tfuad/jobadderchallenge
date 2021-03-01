@@ -29,14 +29,11 @@ export class JobService {
       .pipe(
         tap(_ => this.log(`fetched hero id=${id}`)),
         catchError(this.handleError<Hero>(`getHero: id=${id}`))
-      )
-
-    this.messageService.add(`HeroService: fetched hero id=${id}`);
-    return of(HEROES.find(hero => hero.id === id));
+      );
   }
 
   private log(message: String): void {
-    this.messageService.add(`HeroService: ${message}`);
+    this.messageService.add(`JobService: ${message}`);
   }
 
   /**

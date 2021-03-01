@@ -1018,6 +1018,8 @@
     <TypeScriptCompile Include="ClientApp\src\app\dashboard\dashboard.component.spec.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\dashboard\dashboard.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\hero.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\in-memory-data.service.spec.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\in-memory-data.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\job-detail\job-detail.component.spec.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\job-detail\job-detail.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\job.service.spec.ts" />
