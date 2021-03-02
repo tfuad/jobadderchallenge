@@ -5,8 +5,9 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding: 0 15px 4em;
+    margin: 0 auto;
+    width: 90vw;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -21,4 +22,8 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+h1 {
+    text-align: center;
 }

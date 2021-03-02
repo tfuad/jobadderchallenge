@@ -31,7 +31,9 @@ namespace JobAdderChallenge.Services
         }
         public IEnumerable<JobCandidate> GetJobCandidateScores(Job job, List<Candidate> candidates)
         {
-            return candidates.Select(candidate => Calculate(job, candidate));
+            return candidates
+                .Select(candidate => Calculate(job, candidate))
+                .OrderByDescending(candidate => candidate.Score);
         }
 
         private JobCandidate Calculate(Job job, Candidate candidate)

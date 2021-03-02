@@ -1,8 +1,11 @@
+import { Router } from '@angular/router';
+
 import { Component, OnInit } from '@angular/core';
 
-import { Hero } from '../hero';
-import { JobService } from '../job.service';
-import { MessageService } from '../message.service';
+import { Job } from '../interfaces/job';
+
+import { JobAdderService } from '../services/job-adder.service';
+import { MessageService } from '../services/message.service';
 
 @Component({
   selector: 'app-jobs',
@@ -10,15 +13,22 @@ import { MessageService } from '../message.service';
   styleUrls: ['./jobs.component.scss']
 })
 export class JobsComponent implements OnInit {
-  heroes: Hero[] = [];
+  jobs: Job[] = [];
+  displayedColumns: string[] = ['id', 'company', 'name', 'topCandidate.name'];
 
-  constructor(private heroService: JobService, private messageService : MessageService) { }
+  constructor(private router: Router, private jobService: JobAdderService, private messageService : MessageService) { }
 
   ngOnInit(): void {
-    this.getHeroes();
+    this.getJobs();
   }
 
-  getHeroes(): void {
-    this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes);
+  getJobs(): void {
+    this.jobService.getJobs().subscribe(jobs => {
+      this.jobs = jobs;
+    });
+  }
+
+  loadJob(row): void {
+    this.router.navigate([`/jobDetail/${row.id}`]);
   }
 }

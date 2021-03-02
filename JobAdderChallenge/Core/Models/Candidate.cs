@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 
@@ -25,9 +26,11 @@ namespace JobAdderChallenge.Core.Models
 
         private string[] GetSkills()
         {
+            var textInfo = new CultureInfo("en-US", false).TextInfo;
             return (SkillTags ?? "")
                 .Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries)
                 .Select(x => x.Trim())
+                .Select(x => textInfo.ToTitleCase(x))
                 .Distinct()
                 .ToArray();
         }

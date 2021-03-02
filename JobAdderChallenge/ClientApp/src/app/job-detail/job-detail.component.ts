@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Hero } from '../hero';
-import { JobService } from '../job.service';
+import { JobDetail } from '../interfaces/job';
+import { JobAdderService } from '../services/job-adder.service';
 
 @Component({
   selector: 'app-job-detail',
@@ -11,17 +11,31 @@ import { JobService } from '../job.service';
   styleUrls: ['./job-detail.component.scss']
 })
 export class JobDetailComponent implements OnInit {
-  hero: Hero;
+  jobDetail: JobDetail;
+  displayedColumns: string[] = ['name','skills'];
 
-  constructor(private route: ActivatedRoute, private heroService: JobService, private location: Location) { }
+  constructor(private route: ActivatedRoute, private jobAdderService: JobAdderService, private location: Location) { }
 
   ngOnInit(): void {
-    this.getHero();
+    this.getJob();
   }
 
-  getHero(): void {
+  getJob(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.heroService.getHero(id).subscribe(hero => this.hero = hero);
+    this.jobAdderService.getJobDetail(id).subscribe(jobDetail => {
+      this.jobDetail = jobDetail;
+    });
+  }
+
+  formatCandidateSkills(jobSkills: string[], candidateSkills: string[]) {
+    return candidateSkills.map(x => {
+      let isDesiredSkill = jobSkills.indexOf(x) >= 0;
+      return isDesiredSkill ? `<span><b>${x}</b></span>` : `<span>${x}</span>`;
+    }).join('');
+  }
+
+  loadCandidate(id: number): void {
+    // TODO: implement a candidate page which shows list of suitable jobs.
   }
 
   goBack(): void {

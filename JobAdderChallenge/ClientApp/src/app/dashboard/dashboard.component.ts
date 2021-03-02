@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Hero } from '../hero';
-import { JobService } from '../job.service';
+import { Job } from '../interfaces/job';
+import { JobAdderService } from '../services/job-adder.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,16 +10,16 @@ import { JobService } from '../job.service';
 })
 export class DashboardComponent implements OnInit {
 
-  heroes: Hero[] = [];
+  jobs: Job[] = [];
 
-  constructor(private heroService: JobService) { }
+  constructor(private jobAdderService: JobAdderService) { }
 
   ngOnInit(): void {
-    this.getHeroes();
+    this.getJobs();
   }
 
-  getHeroes(): void {
-    this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes.slice(1, 5));
+  getJobs(): void {
+    //this.jobAdderService.getJobs().subscribe(jobs => this.jobs = jobs);
   }
 
 }

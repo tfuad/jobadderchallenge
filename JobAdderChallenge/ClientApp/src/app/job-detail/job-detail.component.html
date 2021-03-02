@@ -1,9 +1,47 @@
-<div *ngIf="hero">
-  <h2>{{hero.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{hero.id}}</div>
-  <div>
-    <label for="hero-name">Hero name: </label>
-    <input id="hero-name" [(ngModel)]="hero.name" placeholder="name">
+<div *ngIf="jobDetail">
+  <div id="job-detail-header">
+    <div>
+      <label for="company-name">Company name</label>
+      <span id="company-name">{{jobDetail.company}}</span>
+    </div>
+    <div>
+      <label for="job-name">Job name</label>
+      <span id="job-name">{{jobDetail.name}}</span>
+    </div>
+    <div>
+      <label for="desired-skills">Desired Skills</label>
+      <span id="desired-skills">{{jobDetail.skills.join('\n')}}</span>
+    </div>
+    <div>
+      <label for="top-candidate-name">Most Suitable Candidate</label>
+      <span id="top-candidate-name">{{jobDetail.topCandidates[0].name}}</span>
+    </div>
+    <!--<button (click)="goBack()">go back</button></span>-->
   </div>
+
+  <mat-expansion-panel id="job-detail-candidates">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Show all suitable candidates
+      </mat-panel-title>
+      <mat-panel-description></mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-table [dataSource]="jobDetail.topCandidates" class="mat-elevation-z8">
+      <!-- Id Column -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="skills">
+        <mat-header-cell *matHeaderCellDef>Skills</mat-header-cell>
+        <mat-cell *matCellDef="let element" [innerHTML]="formatCandidateSkills(jobDetail.skills, element.skills)"></mat-cell>
+      </ng-container>
+
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" (click)=loadCandidate(row)></mat-row>
+    </mat-table>
+  </mat-expansion-panel>
 </div>
-<button (click)="goBack()">go back</button>

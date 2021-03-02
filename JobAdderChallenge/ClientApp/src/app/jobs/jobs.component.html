@@ -1,10 +1,31 @@
-<h2>My Heroes</h2>
-<ul class="heroes">
-  <li *ngFor="let hero of heroes">
-    <a routerLink="/detail/{{hero.id}}">
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
-    </a>
-  </li>
-</ul>
+<h2>Job Listing</h2>
+<mat-divider></mat-divider>
+<mat-table [dataSource]="jobs" class="mat-elevation-z8">
+  <!-- Id Column -->
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+  </ng-container>
 
-<!--<app-job-detail [hero]="selectedHero"></app-job-detail>-->
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+  </ng-container>
+
+  <!-- Company Column -->
+  <ng-container matColumnDef="company">
+    <mat-header-cell *matHeaderCellDef> Company </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.company}} </mat-cell>
+  </ng-container>
+
+  <!-- Top Candidate Name Column -->
+  <ng-container matColumnDef="topCandidate.name">
+    <mat-header-cell *matHeaderCellDef> Top Candidate </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.topCandidate.name}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;" (click)=loadJob(row)></mat-row>
+</mat-table>
+

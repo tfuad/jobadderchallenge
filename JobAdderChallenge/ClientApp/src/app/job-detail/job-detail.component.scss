@@ -1,0 +1,44 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+// TODO: investigate why I'm unable to configure the padding in mat-expansion-panel-body
+// without disabling encapsulation using ng-deep and !important
+::ng-deep .mat-expansion-panel-body {
+  padding: 0 !important
+}
+
+label {
+  font-size: 1.2em;
+  font-weight: bold;
+  display: block;
+  margin: 0.5em 0;
+}
+
+:host {
+}
+
+#job-detail-header {
+  margin: 0 0 2em 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+#desired-skills {
+  white-space: pre-wrap;
+  line-height: 2em;
+}
+
+mat-row {
+  display: grid;
+  grid-template-columns: repeat( 2, 1fr );
+}
+
+mat-row::after {
+  display: none !important;
+}
+
+
+.mat-column-skills {
+  display: grid;
+  grid-template-columns: repeat( auto-fit,150px);
+  line-height: 1.5em;
+}

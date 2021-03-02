@@ -1,21 +1,21 @@
-/* HeroesComponent's private CSS styles */
-.heroes {
+/* JobsComponent's private CSS styles */
+.jobs {
   margin: 0 0 2em 0;
   list-style-type: none;
   padding: 0;
   width: 15em;
 }
 
-.heroes li {
+.jobs li {
   position: relative;
   cursor: pointer;
 }
 
-.heroes li:hover {
+.jobs li:hover {
   left: .1em;
 }
 
-.heroes a {
+.jobs a {
   color: #333;
   text-decoration: none;
   background-color: #EEE;
@@ -27,17 +27,17 @@
   width: 100%;
 }
 
-.heroes a:hover {
+.jobs a:hover {
   color: #2c3a41;
   background-color: #e6e6e6;
 }
 
-.heroes a:active {
+.jobs a:active {
   background-color: #525252;
   color: #fafafa;
 }
 
-.heroes .badge {
+.jobs .badge {
   display: inline-block;
   font-size: small;
   color: white;
@@ -52,4 +52,13 @@
   text-align: right;
   margin-right: .8em;
   border-radius: 4px 0 0 4px;
+}
+
+.mat-row:hover {
+  background-color: #ccc;
+  cursor: pointer;
+}
+
+mat-header-cell {
+    font-weight: bold;
 }
