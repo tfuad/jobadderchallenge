@@ -13,13 +13,7 @@ namespace JobAdderChallenge
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            /*routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );*/
-
-
+            // Routing will be handled by Angular for this project.
             routes.MapRoute(
                 name: "Default",
                 url: "{*.}",

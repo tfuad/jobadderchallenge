@@ -28,6 +28,7 @@ namespace JobAdderChallenge.Core.Models
 
         private string[] GetSkills()
         {
+            // TODO: move this to a helper method.
             var textInfo = new CultureInfo("en-US", false).TextInfo;
             return (Skills ?? "")
                 .Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries)

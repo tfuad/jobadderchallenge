@@ -15,6 +15,13 @@ namespace JobAdderChallenge.Controllers.Api
         JobAdderService service = new JobAdderService();
         IJobCandidateMatcherService matcherService = new JobCandidateMatcherService();
 
+        // You're able to swap out matcher methods using the following method
+        // matcher.SetMatcherMethod(new SkillStrengthMatcher());
+        // TODO: allow providing multiple matchers either through score aggregation or by sorting based on score from each matcher
+
+        // Ideally we would only fetch a small collection of records if the api supports it
+        // otherwise we could use a separate data ingestion process to store this information locally and serve it from our database.
+
         [HttpGet]
         public async Task<IHttpActionResult> GetJobs()
         {

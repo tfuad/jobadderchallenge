@@ -1,27 +1,5 @@
-﻿@model JobAdderChallenge.Models.Home
-
-@{
-    ViewBag.Title = "Index";
+﻿@{
+    ViewBag.Title = "JobAdder";
 }
 <base href="/" />
-<!--<h2>JobAdder</h2>-->
 <app-root>Loading please wait...</app-root>
-
-@*
-<ul>
-    @foreach (var job in Model.Jobs)
-    {
-        <li>
-            <h1>@job.Name</h1>
-            <p>@foreach (var skill in @job.Skills) { <li> @skill </li> }</p>
-
-            @foreach (var jobCandidate in job.JobCandidates)
-            {
-<p>@jobCandidate.Candidate.Name - @jobCandidate.Score</p>
-            <p>@foreach (var skill in jobCandidate.Candidate.Skills)
-            { <li>x @skill </li> }</p>
-            }
-        </li>
-    }
-</ul>
-*@
