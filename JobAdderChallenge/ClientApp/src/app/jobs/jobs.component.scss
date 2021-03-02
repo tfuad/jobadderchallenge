@@ -1,4 +1,10 @@
 /* JobsComponent's private CSS styles */
+
+:host {
+    position: relative;
+    display: block;
+}
+
 .jobs {
   margin: 0 0 2em 0;
   list-style-type: none;

@@ -14,39 +14,15 @@ namespace JobAdderChallenge.Services
     {
         readonly Uri baseAddress = new Uri("https://private-anon-151cea16d6-jobadder1.apiary-mock.com/");
 
-        public string JobsJson
-        {
-            get
-            {
-                var baseDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin");
-                return File.ReadAllText($"{baseDirectory}\\jobs.json");
-            }
-        }
+        public async Task<List<Job>> GetJobsAsync() => await GetAsync<List<Job>>("jobs");
+        public async Task<List<Candidate>> GetCandidatesAsync() => await GetAsync<List<Candidate>>("candidates");
 
-        public string CandidatesJson
-        {
-            get
-            {
-                var baseDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin");
-                return File.ReadAllText($"{baseDirectory}\\candidates.json");
-            }
-        }
-
-        public async Task<List<Job>> GetJobsAsync()
+        private async Task<T> GetAsync<T>(string requestUri)
         {
             using (var httpClient = new HttpClient { BaseAddress = baseAddress })
             {
-                var content = JobsJson; // await httpClient.GetStringAsync("jobs");
-                return JsonConvert.DeserializeObject<List<Job>>(content);
-            }
-        }
-
-        public async Task<List<Candidate>> GetCandidatesAsync()
-        {
-            using (var httpClient = new HttpClient())
-            {
-                var content = CandidatesJson;// await httpClient.GetStringAsync("candidates");
-                return JsonConvert.DeserializeObject<List<Candidate>>(content);
+                var content = await httpClient.GetStringAsync(requestUri);
+                return JsonConvert.DeserializeObject<T>(content);
             }
         }
     }

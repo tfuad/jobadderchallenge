@@ -15,6 +15,7 @@ import { MessageService } from '../services/message.service';
 export class JobsComponent implements OnInit {
   jobs: Job[] = [];
   displayedColumns: string[] = ['id', 'company', 'name', 'topCandidate.name'];
+  isLoading: boolean = true;
 
   constructor(private router: Router, private jobService: JobAdderService, private messageService : MessageService) { }
 
@@ -23,8 +24,10 @@ export class JobsComponent implements OnInit {
   }
 
   getJobs(): void {
+    this.isLoading = true;
     this.jobService.getJobs().subscribe(jobs => {
       this.jobs = jobs;
+      this.isLoading = false;
     });
   }
 

@@ -13,6 +13,7 @@ import { JobAdderService } from '../services/job-adder.service';
 export class JobDetailComponent implements OnInit {
   jobDetail: JobDetail;
   displayedColumns: string[] = ['name','skills'];
+  isLoading: boolean = true;
 
   constructor(private route: ActivatedRoute, private jobAdderService: JobAdderService, private location: Location) { }
 
@@ -21,9 +22,11 @@ export class JobDetailComponent implements OnInit {
   }
 
   getJob(): void {
+    this.isLoading = true;
     const id = +this.route.snapshot.paramMap.get('id');
     this.jobAdderService.getJobDetail(id).subscribe(jobDetail => {
       this.jobDetail = jobDetail;
+      this.isLoading = false;
     });
   }
 

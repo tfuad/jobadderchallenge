@@ -1,3 +1,7 @@
+<h2>Job Details</h2>
+<mat-divider></mat-divider>
+<h2 *ngIf="isLoading" class="loader-status">Fetching Job Details Please Wait...</h2>
+
 <div *ngIf="jobDetail">
   <div id="job-detail-header">
     <div>
@@ -16,7 +20,6 @@
       <label for="top-candidate-name">Most Suitable Candidate</label>
       <span id="top-candidate-name">{{jobDetail.topCandidates[0].name}}</span>
     </div>
-    <!--<button (click)="goBack()">go back</button></span>-->
   </div>
 
   <mat-expansion-panel id="job-detail-candidates">
@@ -33,7 +36,7 @@
         <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
       </ng-container>
 
-      <!-- Name Column -->
+      <!-- Skills Column -->
       <ng-container matColumnDef="skills">
         <mat-header-cell *matHeaderCellDef>Skills</mat-header-cell>
         <mat-cell *matCellDef="let element" [innerHTML]="formatCandidateSkills(jobDetail.skills, element.skills)"></mat-cell>

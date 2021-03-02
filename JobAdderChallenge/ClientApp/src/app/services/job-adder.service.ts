@@ -7,7 +7,6 @@ import { Candidate, CandidateDetail } from '../interfaces/candidate';
 import { JobCandidate } from '../interfaces/job-candidate';
 
 
-import { HEROES } from '../mock-heroes';
 import { MessageService } from './message.service';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';

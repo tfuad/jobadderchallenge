@@ -1,6 +1,8 @@
 <h2>Job Listing</h2>
 <mat-divider></mat-divider>
-<mat-table [dataSource]="jobs" class="mat-elevation-z8">
+<h2 *ngIf="isLoading" class="loader-status">Fetching Jobs Please Wait...</h2>
+
+<mat-table [dataSource]="jobs" class="mat-elevation-z8" [ngClass]="{'blur' : isLoading}">
   <!-- Id Column -->
   <ng-container matColumnDef="id">
     <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
