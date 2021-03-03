@@ -20,7 +20,7 @@ to preview, stage and commit code.
 
 1. Take a local copy of the project using the following command
 ```
-git clone https://url/
+git clone https://github.com/tfuad/jobadderchallenge.git
 ```
 You can obtain this URL by clicking the "Code" button at the top of the page.
 
