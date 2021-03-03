@@ -4,6 +4,9 @@ This is a web application that finds the most suitable candidate for each job an
 
 
 ## Build / Development Steps
+
+**Note: See TroubleShooter section at bottom if you encounter any issues**
+
 ### Prerequisite
 * [Microsoft Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 * ASP.NET and web development (Install via Visual Studio Installer)
@@ -18,13 +21,18 @@ Not required but I personally use
 to preview, stage and commit code.
 
 
-1. Take a local copy of the project using the following command
+Take a local copy of the project using the following command
 ```
 git clone https://github.com/tfuad/jobadderchallenge.git
 ```
 You can obtain this URL by clicking the "Code" button at the top of the page.
 
-2. Open **JobAdderChallenge.sln**
+**Navigate** to the ClientApp directory and in the command prompt run the following commands
+npm update
+
+ng build
+
+**Open** JobAdderChallenge.sln
 
 Right click on **JobAdderChallenge** and select "**Manage NuGet Packages**" you should be given an option to install the packages.
 
@@ -168,3 +176,24 @@ clinical did have an impact on the final score but was not as significant as the
 ```
 
 This approach can be flawed as it gives a lot of weight to the top skill which can be impossible to overcome from another candidate with every other skill except for that top one.
+
+
+## Troubleshooting
+
+```
+Directory does not exist.
+Parameter name: directoryVirtualPath
+
+bundles.Add(new Bundle("~/bundles/Angular")
+```
+
+If you encounter the above, ensure you've executed **ng build** in the ClientApp directory
+
+```
+An unhandled exception occurred: Cannot find module '@angular-devkit/build-angular/package.json'
+```
+
+If you encounter the above, be sure to navigate to the ClientApp directory and execute **npm update** followed by **ng build**
+
+for continuous building use **ng build --extract-css --watch**
+
